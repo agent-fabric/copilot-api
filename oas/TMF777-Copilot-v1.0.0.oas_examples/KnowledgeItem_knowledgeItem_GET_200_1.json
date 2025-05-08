@@ -1,0 +1,40 @@
+{
+    "http-request": {
+        "path": "/knowledgeItem",
+        "method": "GET",
+        "query": {
+            "offset": "775",
+            "limit": "519",
+            "before": "KLRYI",
+            "after": "WVTYY",
+            "sort": "TIROB",
+            "filter": "YKGQB"
+        },
+        "description": "This is an example of a request to retrieve a list of entities at the /knowledgeItem endpoint"
+    },
+    "http-response": {
+        "status": 200,
+        "body": [
+            {
+                "@type": "KnowledgeItem",
+                "@baseType": "DVKTR",
+                "@schemaLocation": "JYIUK",
+                "href": "MFTAD",
+                "id": "XSDVB",
+                "title": "OKSKL",
+                "content": "VDRGG",
+                "tags": [
+                    "NCSVD",
+                    "BLWGU"
+                ]
+            }
+        ],
+        "status-text": "OK",
+        "headers": {
+            "X-Total-Count": "164",
+            "X-Result-Count": "499",
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response when the entity has @type value as KnowledgeItem"
+    }
+}

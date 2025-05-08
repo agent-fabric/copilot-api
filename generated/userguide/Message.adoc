@@ -1,0 +1,34 @@
+:isGenerated:
+
+include::Environment.adoc[]
+
+==== Message resource
+
+Message resource representation.
+
+
+*Resource model*
+
+include::Message_diagram.adoc[]
+
+*Field descriptions*
+
+*Message fields*
+
+[cols="35%,65%"]
+|===
+|content |A String. 
+|href |A String. Hyperlink reference.
+|id |A String. Unique identifier.
+|role |A String. ENUMERATED with values: + 
+* user +
+* system
+|timestamp |A DateTime. 
+|@baseType |A String. When sub-classing, this defines the super-class.
+|@schemaLocation |A String. A URI to a JSON-Schema file that defines additional attributes and relationships.
+|@type |A String. When sub-classing, this defines the sub-class Extensible name.
+|===
+
+
+
+

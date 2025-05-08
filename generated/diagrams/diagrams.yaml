@@ -1,0 +1,13 @@
+graphs:
+ -
+  Hub: Resource_Hub.puml
+ -
+  ToolCallTask: Resource_ToolCallTask.puml
+ -
+  KnowledgeItem: Resource_KnowledgeItem.puml
+ -
+  Rating: Resource_Rating.puml
+ -
+  Thread: Resource_Thread.puml
+ -
+  Message: Resource_Message.puml

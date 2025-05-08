@@ -1,0 +1,28 @@
+{
+    "http-request": {
+        "path": "/knowledgeItem/ICNJY",
+        "method": "GET",
+        "description": "This is an example of a request to retrieve a specific entity at the /knowledgeItem/ICNJY endpoint"
+    },
+    "http-response": {
+        "status": 200,
+        "body": {
+            "@type": "KnowledgeItem",
+            "@baseType": "IYKQB",
+            "@schemaLocation": "OROWR",
+            "href": "PXXNQ",
+            "id": "KLFEI",
+            "title": "DYQVI",
+            "content": "NRDCJ",
+            "tags": [
+                "AFMBF",
+                "CELRN"
+            ]
+        },
+        "status-text": "OK",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response when the entity has @type value as KnowledgeItem"
+    }
+}

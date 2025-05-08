@@ -1,0 +1,38 @@
+{
+    "http-request": {
+        "path": "/message",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "@type": "Message",
+            "@baseType": "WISVT",
+            "@schemaLocation": "GEEMU",
+            "href": "PUJVB",
+            "id": "YWMAI",
+            "role": "user",
+            "content": "KILRJ",
+            "timestamp": "2025-05-07T19:24:52Z"
+        },
+        "description": "This is an example of a request to create a new entity at the /message endpoint when the entity has @type value as Message"
+    },
+    "http-response": {
+        "status": 201,
+        "body": {
+            "@type": "Message",
+            "@baseType": "LBOGX",
+            "@schemaLocation": "UDXNW",
+            "href": "DUVUA",
+            "id": "XCBDA",
+            "role": "user",
+            "content": "HYPPD",
+            "timestamp": "2025-05-07T19:24:52Z"
+        },
+        "status-text": "Created",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response after creating a new entity at the /message endpoint when the entity has @type value as Message"
+    }
+}

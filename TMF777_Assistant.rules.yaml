@@ -1,0 +1,234 @@
+rulesVersion: 1.0.0
+api:
+  name: Copilot Assistant API
+  shortName: Copilot
+  description: |
+    TMF-aligned Copilot API implementing conversational assistants with threads, messages,
+    ratings (feedback), and knowledge retrieval. Aligned with OpenAI Responses API structure.
+  tmfId: TMF777
+  tmfName: Assistant
+  hostUrl: http://serverRoot
+  basePath: /api/rest/copilot/v1/
+  version: 1.0.0
+  resources:
+    - name: Thread
+      schema: schemas/Tmf/Common/Agent/Thread.schema.json#Thread
+      supportedHttpMethods:
+        GET:
+          required: true
+          examples:
+            - name: thread_DQABS_GET_200_9
+              description: thread_DQABS_GET_200_9
+              content-type: application/json
+              isCollection: false
+              pathParameters:
+                - name: objectId
+                  value: DQABS
+              response:
+                file: ./documentation/operation-samples/thread_DQABS_GET_200_9_response.json
+                description: 'This is an example of a response '
+            - name: thread_GET_200_7
+              description: thread_GET_200_7
+              content-type: application/json
+              isCollection: true
+              queryParameters:
+                - name: offset
+                  value: '756'
+                - name: limit
+                  value: '386'
+                - name: before
+                  value: DOMGJ
+                - name: after
+                  value: UWJSQ
+                - name: sort
+                  value: AJWWK
+                - name: filter
+                  value: LRBAB
+              response:
+                file: ./documentation/operation-samples/thread_GET_200_7_response.json
+                description: 'This is an example of a response '
+        POST:
+          required: true
+          examples:
+            - name: thread_POST_201_8
+              description: thread_POST_201_8
+              content-type: application/json
+              isCollection: false
+              request:
+                file: ./documentation/operation-samples/thread_POST_201_8_request.json
+                description: 'This is an example of a request to create a new entity at the /thread endpoint '
+              response:
+                file: ./documentation/operation-samples/thread_POST_201_8_response.json
+                description: 'This is an example of a response after creating a new entity at the /thread endpoint '
+      examples:
+        - file: ./documentation/resource-samples/Thread.json
+    - name: Message
+      schema: schemas/Tmf/Common/Agent/Message.schema.json#Message
+      supportedHttpMethods:
+        GET:
+          required: true
+          examples:
+            - name: Message_message_GET_200_3
+              description: Message_message_GET_200_3
+              content-type: application/json
+              isCollection: true
+              queryParameters:
+                - name: offset
+                  value: '111'
+                - name: limit
+                  value: '101'
+                - name: before
+                  value: SSWJT
+                - name: after
+                  value: JAEWR
+                - name: sort
+                  value: JGSAV
+                - name: filter
+                  value: MDWTF
+              response:
+                file: ./documentation/operation-samples/Message_message_GET_200_3_response.json
+                description: This is an example of a response when the entity has @type value as Message
+            - name: Message_message_YIQEV_GET_200_5
+              description: Message_message_YIQEV_GET_200_5
+              content-type: application/json
+              isCollection: false
+              pathParameters:
+                - name: objectId
+                  value: YIQEV
+              response:
+                file: ./documentation/operation-samples/Message_message_YIQEV_GET_200_5_response.json
+                description: This is an example of a response when the entity has @type value as Message
+        POST:
+          required: true
+          examples:
+            - name: Message_message_POST_201_4
+              description: Message_message_POST_201_4
+              content-type: application/json
+              isCollection: false
+              request:
+                file: ./documentation/operation-samples/Message_message_POST_201_4_request.json
+                description: >-
+                  This is an example of a request to create a new entity at the /message endpoint when the entity has
+                  @type value as Message
+              response:
+                file: ./documentation/operation-samples/Message_message_POST_201_4_response.json
+                description: >-
+                  This is an example of a response after creating a new entity at the /message endpoint when the entity
+                  has @type value as Message
+      examples:
+        - file: ./documentation/resource-samples/Message.json
+    - name: ToolCallTask
+      schema: schemas/Tmf/Common/Agent/ToolCallTask.schema.json#ToolCallTask
+      supportedHttpMethods:
+        GET:
+          required: true
+          examples:
+            - name: ToolCallTask_toolCallTask_EOADY_GET_200_12
+              description: ToolCallTask_toolCallTask_EOADY_GET_200_12
+              content-type: application/json
+              isCollection: false
+              pathParameters:
+                - name: objectId
+                  value: EOADY
+              response:
+                file: ./documentation/operation-samples/ToolCallTask_toolCallTask_EOADY_GET_200_12_response.json
+                description: This is an example of a response when the entity has @type value as ToolCallTask
+            - name: ToolCallTask_toolCallTask_GET_200_10
+              description: ToolCallTask_toolCallTask_GET_200_10
+              content-type: application/json
+              isCollection: true
+              queryParameters:
+                - name: offset
+                  value: '839'
+                - name: limit
+                  value: '409'
+                - name: before
+                  value: DKYHD
+                - name: after
+                  value: GJHVN
+                - name: sort
+                  value: WGTEL
+                - name: filter
+                  value: YOSTI
+              response:
+                file: ./documentation/operation-samples/ToolCallTask_toolCallTask_GET_200_10_response.json
+                description: This is an example of a response when the entity has @type value as ToolCallTask
+        POST:
+          required: true
+          examples:
+            - name: ToolCallTask_toolCallTask_POST_201_11
+              description: ToolCallTask_toolCallTask_POST_201_11
+              content-type: application/json
+              isCollection: false
+              request:
+                file: ./documentation/operation-samples/ToolCallTask_toolCallTask_POST_201_11_request.json
+                description: >-
+                  This is an example of a request to create a new entity at the /toolCallTask endpoint when the entity
+                  has @type value as ToolCallTask
+              response:
+                file: ./documentation/operation-samples/ToolCallTask_toolCallTask_POST_201_11_response.json
+                description: >-
+                  This is an example of a response after creating a new entity at the /toolCallTask endpoint when the
+                  entity has @type value as ToolCallTask
+      examples:
+        - file: ./documentation/resource-samples/ToolCallTask.json
+    - name: Rating
+      schema: schemas/Tmf/Common/Agent/Rating.schema.json#Rating
+      supportedHttpMethods:
+        POST:
+          required: true
+          examples:
+            - name: Rating_rating_POST_201_6
+              description: Rating_rating_POST_201_6
+              content-type: application/json
+              isCollection: false
+              request:
+                file: ./documentation/operation-samples/Rating_rating_POST_201_6_request.json
+                description: >-
+                  This is an example of a request to create a new entity at the /rating endpoint when the entity has
+                  @type value as Rating
+              response:
+                file: ./documentation/operation-samples/Rating_rating_POST_201_6_response.json
+                description: >-
+                  This is an example of a response after creating a new entity at the /rating endpoint when the entity
+                  has @type value as Rating
+      examples:
+        - file: ./documentation/resource-samples/Rating.json
+    - name: KnowledgeItem
+      schema: schemas/Tmf/Common/Agent/KnowledgeItem.schema.json#KnowledgeItem
+      supportedHttpMethods:
+        GET:
+          required: true
+          examples:
+            - name: KnowledgeItem_knowledgeItem_GET_200_1
+              description: KnowledgeItem_knowledgeItem_GET_200_1
+              content-type: application/json
+              isCollection: true
+              queryParameters:
+                - name: offset
+                  value: '775'
+                - name: limit
+                  value: '519'
+                - name: before
+                  value: KLRYI
+                - name: after
+                  value: WVTYY
+                - name: sort
+                  value: TIROB
+                - name: filter
+                  value: YKGQB
+              response:
+                file: ./documentation/operation-samples/KnowledgeItem_knowledgeItem_GET_200_1_response.json
+                description: This is an example of a response when the entity has @type value as KnowledgeItem
+            - name: KnowledgeItem_knowledgeItem_ICNJY_GET_200_2
+              description: KnowledgeItem_knowledgeItem_ICNJY_GET_200_2
+              content-type: application/json
+              isCollection: false
+              pathParameters:
+                - name: objectId
+                  value: ICNJY
+              response:
+                file: ./documentation/operation-samples/KnowledgeItem_knowledgeItem_ICNJY_GET_200_2_response.json
+                description: This is an example of a response when the entity has @type value as KnowledgeItem
+      examples:
+        - file: ./documentation/resource-samples/KnowledgeItem.json

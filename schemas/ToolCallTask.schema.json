@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://datamodel.tmforum.org/ToolCallTask.schema.json",
+  "title": "ToolCallTask",
+  "definitions": {
+    "ToolCallTask": {
+      "$id": "#ToolCallTask",
+      "description": "ToolCallTask resource representation",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "href": {
+          "type": "string"
+        },
+        "@type": {
+          "type": "string",
+          "default": "ToolCallTask"
+        },
+        "@baseType": {
+          "type": "string"
+        },
+        "@schemaLocation": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "parameters": {
+          "type": "object"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "../Common/Entity.schema.json#/definitions/Entity"
+        }
+      ]
+    }
+  }
+}

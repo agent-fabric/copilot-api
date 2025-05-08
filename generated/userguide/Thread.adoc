@@ -1,0 +1,28 @@
+:isGenerated:
+
+include::Environment.adoc[]
+
+==== Thread resource
+
+
+
+
+*Resource model*
+
+include::Thread_diagram.adoc[]
+
+*Field descriptions*
+
+*Thread fields*
+
+[cols="35%,65%"]
+|===
+|createdAt |A DateTime. 
+|id |A String. 
+|metadata |An object. 
+|status |A String. 
+|===
+
+
+
+

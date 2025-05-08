@@ -1,0 +1,24 @@
+{
+    "http-request": {
+        "path": "/toolCallTask/EOADY",
+        "method": "GET",
+        "description": "This is an example of a request to retrieve a specific entity at the /toolCallTask/EOADY endpoint"
+    },
+    "http-response": {
+        "status": 200,
+        "body": {
+            "@type": "ToolCallTask",
+            "@baseType": "OLFGI",
+            "@schemaLocation": "TNBBV",
+            "href": "ASGPH",
+            "id": "IXGLX",
+            "name": "CUYUB",
+            "parameters": {}
+        },
+        "status-text": "OK",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response when the entity has @type value as ToolCallTask"
+    }
+}

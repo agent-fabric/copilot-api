@@ -1,0 +1,30 @@
+{
+    "http-request": {
+        "path": "/thread",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "id": "PLLWY",
+            "createdAt": "2025-05-07T19:25:00Z",
+            "status": "REGIH",
+            "metadata": {}
+        },
+        "description": "This is an example of a request to create a new entity at the /thread endpoint "
+    },
+    "http-response": {
+        "status": 201,
+        "body": {
+            "id": "WDKFI",
+            "createdAt": "2025-05-07T19:25:00Z",
+            "status": "CFVLP",
+            "metadata": {}
+        },
+        "status-text": "Created",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response after creating a new entity at the /thread endpoint "
+    }
+}

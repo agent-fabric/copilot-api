@@ -1,0 +1,17 @@
+:isGenerated:
+
+include::Environment.adoc[]
+
+ifdef::puml[]
+[plantuml, puml, svg]
+....
+include::./images/Resource_KnowledgeItem.puml[caption="Figure {counter:figure} - ", reftext="Figure {doc-part}-{figure}", title="KnowledgeItem"]
+....
+endif::puml[]
+ifdef::svg[]
+image::{diagrams}/Resource_KnowledgeItem.svg[caption="Figure {counter:figure} - ", reftext="Figure {doc-part}-{figure}", title="KnowledgeItem"]
+endif::svg[]
+ifdef::png[]
+image::{diagrams}/[caption="Figure {counter:figure} - ", reftext="Figure {doc-part}-{figure}", title="KnowledgeItem"]
+endif::png[]
+

@@ -1,0 +1,13 @@
+services:
+  ctk:
+    image: ghcr.io/tmforum-rand/ctk_docker_images/tmf777-ctk-v1:latest
+    user: "${DOCKER_UID}:${DOCKER_GID}"
+    volumes:
+      - ./RESULTS:/usr/src/app/build/reports/specmatic/html:rw
+      - ./config.json:/usr/src/app/config.json:ro
+    networks:
+      - tmf
+
+networks:
+  tmf:
+    external: true

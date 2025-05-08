@@ -1,0 +1,37 @@
+{
+    "http-request": {
+        "path": "/message",
+        "method": "GET",
+        "query": {
+            "offset": "111",
+            "limit": "101",
+            "before": "SSWJT",
+            "after": "JAEWR",
+            "sort": "JGSAV",
+            "filter": "MDWTF"
+        },
+        "description": "This is an example of a request to retrieve a list of entities at the /message endpoint"
+    },
+    "http-response": {
+        "status": 200,
+        "body": [
+            {
+                "@type": "Message",
+                "@baseType": "OHBHT",
+                "@schemaLocation": "KIVNG",
+                "href": "THWPD",
+                "id": "YJGJJ",
+                "role": "user",
+                "content": "NYBAK",
+                "timestamp": "2025-05-07T19:24:50Z"
+            }
+        ],
+        "status-text": "OK",
+        "headers": {
+            "X-Total-Count": "595",
+            "X-Result-Count": "282",
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response when the entity has @type value as Message"
+    }
+}

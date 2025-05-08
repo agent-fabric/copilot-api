@@ -1,0 +1,36 @@
+{
+    "http-request": {
+        "path": "/toolCallTask",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "@type": "ToolCallTask",
+            "@baseType": "XLTYR",
+            "@schemaLocation": "QPDQL",
+            "href": "QIVDH",
+            "id": "FDBDE",
+            "name": "CNTBL",
+            "parameters": {}
+        },
+        "description": "This is an example of a request to create a new entity at the /toolCallTask endpoint when the entity has @type value as ToolCallTask"
+    },
+    "http-response": {
+        "status": 201,
+        "body": {
+            "@type": "ToolCallTask",
+            "@baseType": "GOSOB",
+            "@schemaLocation": "RKBUN",
+            "href": "YAKLX",
+            "id": "XRPEC",
+            "name": "NTMWQ",
+            "parameters": {}
+        },
+        "status-text": "Created",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response after creating a new entity at the /toolCallTask endpoint when the entity has @type value as ToolCallTask"
+    }
+}

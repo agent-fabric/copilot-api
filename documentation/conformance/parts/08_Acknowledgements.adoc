@@ -1,0 +1,22 @@
+include::../config/Environment.adoc[]
+ifdef::backend-pdf[<<<]
+
+== Acknowledgements
+
+=== Release History
+
+[cols=",,,",]
+|===
+|*Release Number* |*Date* |*Release led by:* |*Description*
+| | | |
+| | | |
+|===
+
+=== Version History
+
+[cols=",,,",]
+|===
+|*Version Number* |*Date* |*Modified by* |*Description*
+| | | |
+| | | |
+|===

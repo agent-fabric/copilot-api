@@ -1,0 +1,181 @@
+:isGenerated:
+
+include::Environment.adoc[]
+
+=== Operations on KnowledgeItem
+
+==== List or find KnowledgeItem objects
+
+`*GET /knowledgeItem?fields&#61;...*`
+
+*Description*
+
+This operation list KnowledgeItem entities.
+Attribute selection is enabled for all first level attributes.
+Filtering may be available depending on the compliance level supported by an implementation.
+					
+==== Retrieves a KnowledgeItem by ID
+
+`*GET /knowledgeItem/{id}?fields&#61;...*`
+
+*Description*
+
+This operation retrieves a KnowledgeItem entity.
+Attribute selection is enabled for all first level attributes.
+Filtering may be available depending on the compliance level supported by an implementation.
+					
+
+
+=== Operations on Message
+
+==== List or find Message objects
+
+`*GET /message?fields&#61;...*`
+
+*Description*
+
+This operation list Message entities.
+Attribute selection is enabled for all first level attributes.
+Filtering may be available depending on the compliance level supported by an implementation.
+					
+==== Retrieves a Message by ID
+
+`*GET /message/{id}?fields&#61;...*`
+
+*Description*
+
+This operation retrieves a Message entity.
+Attribute selection is enabled for all first level attributes.
+Filtering may be available depending on the compliance level supported by an implementation.
+					
+==== Creates a Message
+
+`*POST /message?fields&#61;...*`
+
+*Description*
+
+This operation creates a Message entity.
+
+
+*Mandatory Attributes*
+
+[cols="35%,65%"]
+|===
+|*Mandatory Attributes*|*Rule*
+
+|@type |M
+|===
+
+					
+
+
+=== Operations on Rating
+
+==== Creates a Rating
+
+`*POST /rating?fields&#61;...*`
+
+*Description*
+
+This operation creates a Rating entity.
+
+
+*Mandatory Attributes*
+
+[cols="35%,65%"]
+|===
+|*Mandatory Attributes*|*Rule*
+
+|@type |M
+|===
+
+					
+
+
+=== Operations on Thread
+
+==== Retrieves a Thread by ID
+
+`*GET /thread/{id}?fields&#61;...*`
+
+*Description*
+
+This operation retrieves a Thread entity.
+Attribute selection is enabled for all first level attributes.
+Filtering may be available depending on the compliance level supported by an implementation.
+					
+==== List or find Thread objects
+
+`*GET /thread?fields&#61;...*`
+
+*Description*
+
+This operation list Thread entities.
+Attribute selection is enabled for all first level attributes.
+Filtering may be available depending on the compliance level supported by an implementation.
+					
+==== Creates a Thread
+
+`*POST /thread?fields&#61;...*`
+
+*Description*
+
+This operation creates a Thread entity.
+
+
+*Mandatory Attributes*
+
+[cols="35%,65%"]
+|===
+|*Mandatory Attributes*|*Rule*
+
+|createdAt |M
+|id |M
+|===
+
+					
+
+
+=== Operations on ToolCallTask
+
+==== Retrieves a ToolCallTask by ID
+
+`*GET /toolCallTask/{id}?fields&#61;...*`
+
+*Description*
+
+This operation retrieves a ToolCallTask entity.
+Attribute selection is enabled for all first level attributes.
+Filtering may be available depending on the compliance level supported by an implementation.
+					
+==== List or find ToolCallTask objects
+
+`*GET /toolCallTask?fields&#61;...*`
+
+*Description*
+
+This operation list ToolCallTask entities.
+Attribute selection is enabled for all first level attributes.
+Filtering may be available depending on the compliance level supported by an implementation.
+					
+==== Creates a ToolCallTask
+
+`*POST /toolCallTask?fields&#61;...*`
+
+*Description*
+
+This operation creates a ToolCallTask entity.
+
+
+*Mandatory Attributes*
+
+[cols="35%,65%"]
+|===
+|*Mandatory Attributes*|*Rule*
+
+|@type |M
+|===
+
+					
+
+

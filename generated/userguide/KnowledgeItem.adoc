@@ -1,0 +1,32 @@
+:isGenerated:
+
+include::Environment.adoc[]
+
+==== KnowledgeItem resource
+
+KnowledgeItem resource representation.
+
+
+*Resource model*
+
+include::KnowledgeItem_diagram.adoc[]
+
+*Field descriptions*
+
+*KnowledgeItem fields*
+
+[cols="35%,65%"]
+|===
+|content |A String. 
+|href |A String. Hyperlink reference.
+|id |A String. Unique identifier.
+|tags |A String. 
+|title |A String. 
+|@baseType |A String. When sub-classing, this defines the super-class.
+|@schemaLocation |A String. A URI to a JSON-Schema file that defines additional attributes and relationships.
+|@type |A String. When sub-classing, this defines the sub-class Extensible name.
+|===
+
+
+
+

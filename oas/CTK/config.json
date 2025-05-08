@@ -1,0 +1,18 @@
+{
+    "post": {
+        "Message": {
+            "@type": "Message"
+        },
+        "Rating": {
+            "@type": "Rating"
+        },
+        "Thread": {
+            "@type": "Thread"
+        },
+        "ToolCallTask": {
+            "@type": "ToolCallTask"
+        }
+    },
+    "headers": {},
+    "url": "http://api-gateway/tmf-api/copilot/v5"
+}

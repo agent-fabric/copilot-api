@@ -1,0 +1,33 @@
+:isGenerated:
+
+include::Environment.adoc[]
+
+==== Rating resource
+
+Rating resource representation.
+
+
+*Resource model*
+
+include::Rating_diagram.adoc[]
+
+*Field descriptions*
+
+*Rating fields*
+
+[cols="35%,65%"]
+|===
+|comment |A String. 
+|href |A String. Hyperlink reference.
+|id |A String. Unique identifier.
+|rating |A String. ENUMERATED with values: + 
+* thumbs_up +
+* thumbs_down
+|@baseType |A String. When sub-classing, this defines the super-class.
+|@schemaLocation |A String. A URI to a JSON-Schema file that defines additional attributes and relationships.
+|@type |A String. When sub-classing, this defines the sub-class Extensible name.
+|===
+
+
+
+

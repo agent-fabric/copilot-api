@@ -1,0 +1,31 @@
+:isGenerated:
+
+include::Environment.adoc[]
+
+==== ToolCallTask resource
+
+ToolCallTask resource representation.
+
+
+*Resource model*
+
+include::ToolCallTask_diagram.adoc[]
+
+*Field descriptions*
+
+*ToolCallTask fields*
+
+[cols="35%,65%"]
+|===
+|href |A String. Hyperlink reference.
+|id |A String. Unique identifier.
+|name |A String. 
+|parameters |An object. 
+|@baseType |A String. When sub-classing, this defines the super-class.
+|@schemaLocation |A String. A URI to a JSON-Schema file that defines additional attributes and relationships.
+|@type |A String. When sub-classing, this defines the sub-class Extensible name.
+|===
+
+
+
+

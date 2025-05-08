@@ -1,0 +1,7 @@
+include::Environment.adoc[]
+ifdef::backend-pdf[<<<]
+
+== Notification Model Conformance
+
+There are no mandatory notifications for this API.
+

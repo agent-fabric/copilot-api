@@ -1,0 +1,17 @@
+:isGenerated:
+
+include::Environment.adoc[]
+
+ifdef::puml[]
+[plantuml, puml, svg]
+....
+include::./images/Resource_ToolCallTask.puml[caption="Figure {counter:figure} - ", reftext="Figure {doc-part}-{figure}", title="ToolCallTask"]
+....
+endif::puml[]
+ifdef::svg[]
+image::{diagrams}/Resource_ToolCallTask.svg[caption="Figure {counter:figure} - ", reftext="Figure {doc-part}-{figure}", title="ToolCallTask"]
+endif::svg[]
+ifdef::png[]
+image::{diagrams}/[caption="Figure {counter:figure} - ", reftext="Figure {doc-part}-{figure}", title="ToolCallTask"]
+endif::png[]
+

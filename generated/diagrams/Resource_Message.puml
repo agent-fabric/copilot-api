@@ -1,0 +1,52 @@
+@startuml
+'
+' Resource:  Message
+' Source:    TMF777-Copilot-v1.0.0.oas.yaml
+'
+hide circle
+hide methods
+hide stereotype
+show <<Enumeration>> stereotype
+skinparam class {
+   BorderColor<<Extension>> blue
+   FontColor<<Extension>> blue
+   backgroundColor<<Enumeration>> #E6F5F7
+   backgroundColor<<Ref>> #FFFFE0
+   backgroundColor<<Pivot>> #FFFFFFF
+   backgroundColor<<Resource>> #FCF2E3
+   backgroundColor<<SubResource>> #FFFFFFF
+   backgroundColor<<SubResourceReference>> #FADADD
+   backgroundColor<<DiscriminatorNode>> #F2F3F5
+}
+
+skinparam legend {
+   borderRoundCorner 0
+   borderColor red
+   backgroundColor white
+}
+
+class "Message"  <<Pivot>> {
+    content : String
+    href : String
+    id : String
+    role : ENUM String
+{field} //     user//
+{field} //     system//
+    timestamp : DateTime
+    @baseType : String
+    @schemaLocation : String
+    {field}@type : String (1)
+}
+
+
+
+
+
+skinparam legendBackgroundColor #transparent
+skinparam legendBorderColor #transparent
+
+legend
+ <size:10>(1) : Mandatory property
+endlegend
+
+@enduml

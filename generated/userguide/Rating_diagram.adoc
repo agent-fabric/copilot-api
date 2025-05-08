@@ -1,0 +1,17 @@
+:isGenerated:
+
+include::Environment.adoc[]
+
+ifdef::puml[]
+[plantuml, puml, svg]
+....
+include::./images/Resource_Rating.puml[caption="Figure {counter:figure} - ", reftext="Figure {doc-part}-{figure}", title="Rating"]
+....
+endif::puml[]
+ifdef::svg[]
+image::{diagrams}/Resource_Rating.svg[caption="Figure {counter:figure} - ", reftext="Figure {doc-part}-{figure}", title="Rating"]
+endif::svg[]
+ifdef::png[]
+image::{diagrams}/[caption="Figure {counter:figure} - ", reftext="Figure {doc-part}-{figure}", title="Rating"]
+endif::png[]
+

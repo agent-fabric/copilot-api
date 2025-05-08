@@ -1,0 +1,15 @@
+:isGenerated:
+
+include::Environment.adoc[]
+
+include::KnowledgeItem.adoc[]
+
+include::Message.adoc[]
+
+include::Rating.adoc[]
+
+include::Thread.adoc[]
+
+include::ToolCallTask.adoc[]
+
+

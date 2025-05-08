@@ -1,0 +1,21 @@
+{
+    "http-request": {
+        "path": "/thread/DQABS",
+        "method": "GET",
+        "description": "This is an example of a request to retrieve a specific entity at the /thread/DQABS endpoint"
+    },
+    "http-response": {
+        "status": 200,
+        "body": {
+            "id": "KCTLW",
+            "createdAt": "2025-05-07T19:25:04Z",
+            "status": "YBUVE",
+            "metadata": {}
+        },
+        "status-text": "OK",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response "
+    }
+}

@@ -1,0 +1,39 @@
+{
+    "http-request": {
+        "path": "/thread",
+        "method": "GET",
+        "query": {
+            "offset": "756",
+            "limit": "386",
+            "before": "DOMGJ",
+            "after": "UWJSQ",
+            "sort": "AJWWK",
+            "filter": "LRBAB"
+        },
+        "description": "This is an example of a request to retrieve a list of entities at the /thread endpoint"
+    },
+    "http-response": {
+        "status": 200,
+        "body": [
+            {
+                "id": "EKJBR",
+                "createdAt": "2025-05-07T19:24:59Z",
+                "status": "YWLOF",
+                "metadata": {}
+            },
+            {
+                "id": "DHMHG",
+                "createdAt": "2025-05-07T19:24:59Z",
+                "status": "LUBKK",
+                "metadata": {}
+            }
+        ],
+        "status-text": "OK",
+        "headers": {
+            "X-Total-Count": "758",
+            "X-Result-Count": "366",
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response "
+    }
+}

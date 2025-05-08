@@ -1,0 +1,227 @@
+conformance:
+
+  resources:
+   - Hub
+   - ToolCallTask
+   - KnowledgeItem
+   - Rating
+   - Thread
+   - Message
+
+  notifications: []
+
+  Hub:
+    condition: ""
+    comment: ""
+    operations:
+      GET:
+        condition: ""
+        comment: ""
+      POST:
+        condition: ""
+        comment: ""
+      DELETE:
+        condition: ""
+        comment: ""
+    attributes:
+      '@baseType':
+        condition: ""
+        comment: ""
+      '@schemaLocation':
+        condition: ""
+        comment: ""
+      '@type':
+        condition: ""
+        comment: ""
+      callback:
+        condition: ""
+        comment: ""
+      href:
+        condition: ""
+        comment: ""
+      id:
+        condition: ""
+        comment: ""
+      query:
+        condition: ""
+        comment: ""
+    operations-details:
+      POST:
+        mandatory: {}
+
+  KnowledgeItem:
+    condition: M
+    comment: ""
+    operations:
+      GET:
+        condition: M
+        comment: ""
+    attributes:
+      '@baseType':
+        condition: ""
+        comment: ""
+      '@schemaLocation':
+        condition: ""
+        comment: ""
+      '@type':
+        condition: ""
+        comment: ""
+      content:
+        condition: ""
+        comment: ""
+      href:
+        condition: ""
+        comment: ""
+      id:
+        condition: ""
+        comment: ""
+      tags:
+        condition: ""
+        comment: ""
+      title:
+        condition: ""
+        comment: ""
+    operations-details: {}
+
+  Message:
+    condition: M
+    comment: ""
+    operations:
+      GET:
+        condition: M
+        comment: ""
+      POST:
+        condition: M
+        comment: ""
+    attributes:
+      '@baseType':
+        condition: ""
+        comment: ""
+      '@schemaLocation':
+        condition: ""
+        comment: ""
+      '@type':
+        condition: ""
+        comment: ""
+      content:
+        condition: ""
+        comment: ""
+      href:
+        condition: ""
+        comment: ""
+      id:
+        condition: ""
+        comment: ""
+      role:
+        condition: ""
+        comment: ""
+      timestamp:
+        condition: ""
+        comment: ""
+    operations-details:
+      POST:
+        mandatory: {}
+
+  Rating:
+    condition: M
+    comment: ""
+    operations:
+      POST:
+        condition: M
+        comment: ""
+    attributes:
+      comment:
+        condition: ""
+        comment: ""
+      '@baseType':
+        condition: ""
+        comment: ""
+      '@schemaLocation':
+        condition: ""
+        comment: ""
+      '@type':
+        condition: ""
+        comment: ""
+      href:
+        condition: ""
+        comment: ""
+      id:
+        condition: ""
+        comment: ""
+      rating:
+        condition: ""
+        comment: ""
+    operations-details:
+      POST:
+        mandatory: {}
+
+  Thread:
+    condition: M
+    comment: ""
+    operations:
+      GET:
+        condition: M
+        comment: ""
+      POST:
+        condition: M
+        comment: ""
+    attributes:
+      createdAt:
+        condition: ""
+        comment: ""
+      id:
+        condition: ""
+        comment: ""
+      metadata:
+        condition: ""
+        comment: ""
+      status:
+        condition: ""
+        comment: ""
+    operations-details:
+      POST:
+        mandatory: {}
+
+  ToolCallTask:
+    condition: M
+    comment: ""
+    operations:
+      GET:
+        condition: M
+        comment: ""
+      POST:
+        condition: M
+        comment: ""
+    attributes:
+      '@baseType':
+        condition: ""
+        comment: ""
+      '@schemaLocation':
+        condition: ""
+        comment: ""
+      '@type':
+        condition: ""
+        comment: ""
+      href:
+        condition: ""
+        comment: ""
+      id:
+        condition: ""
+        comment: ""
+      name:
+        condition: ""
+        comment: ""
+      parameters:
+        condition: ""
+        comment: ""
+    operations-details:
+      POST:
+        mandatory: {}
+
+api: Copilot Assistant API
+
+conformanceVersion: 1.0.0
+
+description: |
+  Conformance rules for the Copilot API implementing conversational threads,
+  messages, runs, ratings, and knowledge.

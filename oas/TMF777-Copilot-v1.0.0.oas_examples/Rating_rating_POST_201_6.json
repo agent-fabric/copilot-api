@@ -1,0 +1,36 @@
+{
+    "http-request": {
+        "path": "/rating",
+        "method": "POST",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "@type": "Rating",
+            "@baseType": "QINXS",
+            "@schemaLocation": "MNSSN",
+            "href": "EPOWF",
+            "id": "RNXUE",
+            "rating": "thumbs_up",
+            "comment": "ARUNK"
+        },
+        "description": "This is an example of a request to create a new entity at the /rating endpoint when the entity has @type value as Rating"
+    },
+    "http-response": {
+        "status": 201,
+        "body": {
+            "@type": "Rating",
+            "@baseType": "NSISG",
+            "@schemaLocation": "THCIT",
+            "href": "TNKGK",
+            "id": "SEQKW",
+            "rating": "thumbs_up",
+            "comment": "WIFHV"
+        },
+        "status-text": "Created",
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response after creating a new entity at the /rating endpoint when the entity has @type value as Rating"
+    }
+}

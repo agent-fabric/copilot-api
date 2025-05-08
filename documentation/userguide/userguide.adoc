@@ -1,0 +1,41 @@
+:doctype: book
+= Copilot Assistant API User Guide
+:title-page:
+:toc: macro
+:toclevels: 3
+:maindoc:
+
+:COPYRIGHT: (C) TM Forum 2025. All Rights Reserved.
+:DOCID: TMF777
+:RELEASE: TBD
+:DATE: May 2025
+:REVISION: 1.0.0
+:IPR-MODE: RAND
+:STATUS: TBD
+:RELEASE-STATUS: TBD
+
+:MATURITY-LEVEL: TBD
+:TEAM-DATE: TBD
+:APPROVAL-STATUS: TBD
+:VERSION: TBD
+
+
+include::config/Environment.adoc[] 
+include::{generated}/Notice.adoc[]
+
+toc::[]
+
+include::parts/01_Introduction.adoc[]
+
+include::parts/02_UseCases.adoc[]
+
+include::parts/03_PolymorphismAndExtensions.adoc[]
+
+include::parts/04_Resources.adoc[]
+
+include::parts/05_Operations.adoc[]
+
+include::parts/06_Common_notifications.adoc[]
+
+include::parts/07_Acknowledgements.adoc[]
+

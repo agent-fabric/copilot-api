@@ -1,0 +1,36 @@
+{
+    "http-request": {
+        "path": "/toolCallTask",
+        "method": "GET",
+        "query": {
+            "offset": "839",
+            "limit": "409",
+            "before": "DKYHD",
+            "after": "GJHVN",
+            "sort": "WGTEL",
+            "filter": "YOSTI"
+        },
+        "description": "This is an example of a request to retrieve a list of entities at the /toolCallTask endpoint"
+    },
+    "http-response": {
+        "status": 200,
+        "body": [
+            {
+                "@type": "ToolCallTask",
+                "@baseType": "HWIII",
+                "@schemaLocation": "ETOTP",
+                "href": "GYPEH",
+                "id": "JCFJN",
+                "name": "SMAFP",
+                "parameters": {}
+            }
+        ],
+        "status-text": "OK",
+        "headers": {
+            "X-Total-Count": "346",
+            "X-Result-Count": "318",
+            "Content-Type": "application/json"
+        },
+        "description": "This is an example of a response when the entity has @type value as ToolCallTask"
+    }
+}

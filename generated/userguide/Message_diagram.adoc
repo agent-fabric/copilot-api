@@ -1,0 +1,17 @@
+:isGenerated:
+
+include::Environment.adoc[]
+
+ifdef::puml[]
+[plantuml, puml, svg]
+....
+include::./images/Resource_Message.puml[caption="Figure {counter:figure} - ", reftext="Figure {doc-part}-{figure}", title="Message"]
+....
+endif::puml[]
+ifdef::svg[]
+image::{diagrams}/Resource_Message.svg[caption="Figure {counter:figure} - ", reftext="Figure {doc-part}-{figure}", title="Message"]
+endif::svg[]
+ifdef::png[]
+image::{diagrams}/[caption="Figure {counter:figure} - ", reftext="Figure {doc-part}-{figure}", title="Message"]
+endif::png[]
+
