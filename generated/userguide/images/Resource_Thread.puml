@@ -1,7 +1,7 @@
 @startuml
 '
 ' Resource:  Thread
-' Source:    TMF777-Copilot-v1.0.0.oas.yaml
+' Source:    TMF785-Copilot-v1.0.0.oas.yaml
 '
 hide circle
 hide methods

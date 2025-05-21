@@ -1,47 +1,47 @@
-INFO: Linting file 'TMF777-Copilot-v1.0.0.oas.yaml' against 42 rules: https://quobix.com/vacuum/rulesets/recommended
+INFO: Linting file 'TMF785-Copilot-v1.0.0.oas.yaml' against 42 rules: https://quobix.com/vacuum/rulesets/recommended
 
 
 
-TMF777-Copilot-v1.0.0.oas.yaml
+TMF785-Copilot-v1.0.0.oas.yaml
 -------------------------------------------------------------------
 Location                                                                    | Severity | Message                                                                 | Rule                    | Category     | Path
-TMF777-Copilot-v1.0.0.oas.yaml:78:16   | info     | Description at line `78` is a duplicate of line `79`                    | description-duplication | Descriptions | $.paths['/knowledgeItem'].get.summary
-TMF777-Copilot-v1.0.0.oas.yaml:143:16  | info     | Description at line `143` is a duplicate of line `144`                  | description-duplication | Descriptions | $.paths['/message'].get.summary
-TMF777-Copilot-v1.0.0.oas.yaml:252:24  | info     | Description at line `252` is a duplicate of line `187`                  | description-duplication | Descriptions | $.paths['/rating'].post.responses['202'].description
-TMF777-Copilot-v1.0.0.oas.yaml:275:16  | info     | Description at line `275` is a duplicate of line `276`                  | description-duplication | Descriptions | $.paths['/thread'].get.summary
-TMF777-Copilot-v1.0.0.oas.yaml:319:24  | info     | Description at line `319` is a duplicate of line `187`                  | description-duplication | Descriptions | $.paths['/thread'].post.responses['202'].description
-TMF777-Copilot-v1.0.0.oas.yaml:373:16  | info     | Description at line `373` is a duplicate of line `374`                  | description-duplication | Descriptions | $.paths['/toolCallTask'].get.summary
-TMF777-Copilot-v1.0.0.oas.yaml:417:24  | info     | Description at line `417` is a duplicate of line `187`                  | description-duplication | Descriptions | $.paths['/toolCallTask'].post.responses['202'].description
-TMF777-Copilot-v1.0.0.oas.yaml:502:5   | warning  | `schemas` component `KnowledgeItem` is missing a description            | component-description   | Descriptions | $.components.schemas['KnowledgeItem']
-TMF777-Copilot-v1.0.0.oas.yaml:543:5   | warning  | `schemas` component `Message` is missing a description                  | component-description   | Descriptions | $.components.schemas['Message']
-TMF777-Copilot-v1.0.0.oas.yaml:574:5   | warning  | `schemas` component `Message_FVO` is missing a description              | component-description   | Descriptions | $.components.schemas['Message_FVO']
-TMF777-Copilot-v1.0.0.oas.yaml:578:24  | info     | Description at line `578` is a duplicate of line `547`                  | description-duplication | Descriptions | $.components.schemas['Message_FVO'].allOf.description
-TMF777-Copilot-v1.0.0.oas.yaml:617:5   | warning  | `schemas` component `Rating` is missing a description                   | component-description   | Descriptions | $.components.schemas['Rating']
-TMF777-Copilot-v1.0.0.oas.yaml:645:5   | warning  | `schemas` component `Rating_FVO` is missing a description               | component-description   | Descriptions | $.components.schemas['Rating_FVO']
-TMF777-Copilot-v1.0.0.oas.yaml:649:24  | info     | Description at line `649` is a duplicate of line `621`                  | description-duplication | Descriptions | $.components.schemas['Rating_FVO'].allOf.description
-TMF777-Copilot-v1.0.0.oas.yaml:685:5   | warning  | `schemas` component `Thread` is missing a description                   | component-description   | Descriptions | $.components.schemas['Thread']
-TMF777-Copilot-v1.0.0.oas.yaml:697:5   | warning  | `schemas` component `Thread_FVO` is missing a description               | component-description   | Descriptions | $.components.schemas['Thread_FVO']
-TMF777-Copilot-v1.0.0.oas.yaml:717:5   | warning  | `schemas` component `ToolCallTask` is missing a description             | component-description   | Descriptions | $.components.schemas['ToolCallTask']
-TMF777-Copilot-v1.0.0.oas.yaml:742:5   | warning  | `schemas` component `ToolCallTask_FVO` is missing a description         | component-description   | Descriptions | $.components.schemas['ToolCallTask_FVO']
-TMF777-Copilot-v1.0.0.oas.yaml:746:24  | info     | Description at line `746` is a duplicate of line `721`                  | description-duplication | Descriptions | $.components.schemas['ToolCallTask_FVO'].allOf.description
-TMF777-Copilot-v1.0.0.oas.yaml:827:20  | info     | Description at line `827` is a duplicate of line `811`                  | description-duplication | Descriptions | $.components.schemas['Hub'].description
-TMF777-Copilot-v1.0.0.oas.yaml:838:28  | info     | Description at line `838` is a duplicate of line `821`                  | description-duplication | Descriptions | $.components.schemas['Hub'].allOf.properties['callback'].des...
-TMF777-Copilot-v1.0.0.oas.yaml:841:28  | info     | Description at line `841` is a duplicate of line `824`                  | description-duplication | Descriptions | $.components.schemas['Hub'].allOf.properties['query'].descri...
-TMF777-Copilot-v1.0.0.oas.yaml:952:5   | warning  | `#/components/responses/200` is potentially unused or has been orphaned | oas3-unused-component   | Schemas      | $.components.responses['200']
-TMF777-Copilot-v1.0.0.oas.yaml:954:5   | warning  | `#/components/responses/202` is potentially unused or has been orphaned | oas3-unused-component   | Schemas      | $.components.responses['202']
-TMF777-Copilot-v1.0.0.oas.yaml:955:20  | info     | Description at line `955` is a duplicate of line `187`                  | description-duplication | Descriptions | $.components.responses['202'].description
-TMF777-Copilot-v1.0.0.oas.yaml:956:5   | warning  | `#/components/responses/204` is potentially unused or has been orphaned | oas3-unused-component   | Schemas      | $.components.responses['204']
-TMF777-Copilot-v1.0.0.oas.yaml:957:20  | info     | Description at line `957` is a duplicate of line `71`                   | description-duplication | Descriptions | $.components.responses['204'].description
-TMF777-Copilot-v1.0.0.oas.yaml:1120:20 | info     | Description at line `1120` is a duplicate of line `1104`                | description-duplication | Descriptions | $.components.responses['200Thread_Get'].description
-TMF777-Copilot-v1.0.0.oas.yaml:1138:20 | info     | Description at line `1138` is a duplicate of line `1104`                | description-duplication | Descriptions | $.components.responses['200MessageArray'].description
-TMF777-Copilot-v1.0.0.oas.yaml:1154:20 | info     | Description at line `1154` is a duplicate of line `1104`                | description-duplication | Descriptions | $.components.responses['200Message_Get'].description
-TMF777-Copilot-v1.0.0.oas.yaml:1163:20 | info     | Description at line `1163` is a duplicate of line `1129`                | description-duplication | Descriptions | $.components.responses['201Message'].description
-TMF777-Copilot-v1.0.0.oas.yaml:1172:20 | info     | Description at line `1172` is a duplicate of line `1104`                | description-duplication | Descriptions | $.components.responses['200ToolCallTaskArray'].description
-TMF777-Copilot-v1.0.0.oas.yaml:1188:20 | info     | Description at line `1188` is a duplicate of line `1104`                | description-duplication | Descriptions | $.components.responses['200ToolCallTask_Get'].description
-TMF777-Copilot-v1.0.0.oas.yaml:1197:20 | info     | Description at line `1197` is a duplicate of line `1129`                | description-duplication | Descriptions | $.components.responses['201ToolCallTask'].description
-TMF777-Copilot-v1.0.0.oas.yaml:1206:20 | info     | Description at line `1206` is a duplicate of line `1129`                | description-duplication | Descriptions | $.components.responses['201Rating'].description
-TMF777-Copilot-v1.0.0.oas.yaml:1215:20 | info     | Description at line `1215` is a duplicate of line `1104`                | description-duplication | Descriptions | $.components.responses['200KnowledgeItemArray'].description
-TMF777-Copilot-v1.0.0.oas.yaml:1231:20 | info     | Description at line `1231` is a duplicate of line `1104`                | description-duplication | Descriptions | $.components.responses['200KnowledgeItem_Get'].description
+TMF785-Copilot-v1.0.0.oas.yaml:78:16   | info     | Description at line `78` is a duplicate of line `79`                    | description-duplication | Descriptions | $.paths['/knowledgeItem'].get.summary
+TMF785-Copilot-v1.0.0.oas.yaml:143:16  | info     | Description at line `143` is a duplicate of line `144`                  | description-duplication | Descriptions | $.paths['/message'].get.summary
+TMF785-Copilot-v1.0.0.oas.yaml:252:24  | info     | Description at line `252` is a duplicate of line `187`                  | description-duplication | Descriptions | $.paths['/rating'].post.responses['202'].description
+TMF785-Copilot-v1.0.0.oas.yaml:275:16  | info     | Description at line `275` is a duplicate of line `276`                  | description-duplication | Descriptions | $.paths['/thread'].get.summary
+TMF785-Copilot-v1.0.0.oas.yaml:319:24  | info     | Description at line `319` is a duplicate of line `187`                  | description-duplication | Descriptions | $.paths['/thread'].post.responses['202'].description
+TMF785-Copilot-v1.0.0.oas.yaml:373:16  | info     | Description at line `373` is a duplicate of line `374`                  | description-duplication | Descriptions | $.paths['/toolCallTask'].get.summary
+TMF785-Copilot-v1.0.0.oas.yaml:417:24  | info     | Description at line `417` is a duplicate of line `187`                  | description-duplication | Descriptions | $.paths['/toolCallTask'].post.responses['202'].description
+TMF785-Copilot-v1.0.0.oas.yaml:502:5   | warning  | `schemas` component `KnowledgeItem` is missing a description            | component-description   | Descriptions | $.components.schemas['KnowledgeItem']
+TMF785-Copilot-v1.0.0.oas.yaml:543:5   | warning  | `schemas` component `Message` is missing a description                  | component-description   | Descriptions | $.components.schemas['Message']
+TMF785-Copilot-v1.0.0.oas.yaml:574:5   | warning  | `schemas` component `Message_FVO` is missing a description              | component-description   | Descriptions | $.components.schemas['Message_FVO']
+TMF785-Copilot-v1.0.0.oas.yaml:578:24  | info     | Description at line `578` is a duplicate of line `547`                  | description-duplication | Descriptions | $.components.schemas['Message_FVO'].allOf.description
+TMF785-Copilot-v1.0.0.oas.yaml:617:5   | warning  | `schemas` component `Rating` is missing a description                   | component-description   | Descriptions | $.components.schemas['Rating']
+TMF785-Copilot-v1.0.0.oas.yaml:645:5   | warning  | `schemas` component `Rating_FVO` is missing a description               | component-description   | Descriptions | $.components.schemas['Rating_FVO']
+TMF785-Copilot-v1.0.0.oas.yaml:649:24  | info     | Description at line `649` is a duplicate of line `621`                  | description-duplication | Descriptions | $.components.schemas['Rating_FVO'].allOf.description
+TMF785-Copilot-v1.0.0.oas.yaml:685:5   | warning  | `schemas` component `Thread` is missing a description                   | component-description   | Descriptions | $.components.schemas['Thread']
+TMF785-Copilot-v1.0.0.oas.yaml:697:5   | warning  | `schemas` component `Thread_FVO` is missing a description               | component-description   | Descriptions | $.components.schemas['Thread_FVO']
+TMF785-Copilot-v1.0.0.oas.yaml:717:5   | warning  | `schemas` component `ToolCallTask` is missing a description             | component-description   | Descriptions | $.components.schemas['ToolCallTask']
+TMF785-Copilot-v1.0.0.oas.yaml:742:5   | warning  | `schemas` component `ToolCallTask_FVO` is missing a description         | component-description   | Descriptions | $.components.schemas['ToolCallTask_FVO']
+TMF785-Copilot-v1.0.0.oas.yaml:746:24  | info     | Description at line `746` is a duplicate of line `721`                  | description-duplication | Descriptions | $.components.schemas['ToolCallTask_FVO'].allOf.description
+TMF785-Copilot-v1.0.0.oas.yaml:827:20  | info     | Description at line `827` is a duplicate of line `811`                  | description-duplication | Descriptions | $.components.schemas['Hub'].description
+TMF785-Copilot-v1.0.0.oas.yaml:838:28  | info     | Description at line `838` is a duplicate of line `821`                  | description-duplication | Descriptions | $.components.schemas['Hub'].allOf.properties['callback'].des...
+TMF785-Copilot-v1.0.0.oas.yaml:841:28  | info     | Description at line `841` is a duplicate of line `824`                  | description-duplication | Descriptions | $.components.schemas['Hub'].allOf.properties['query'].descri...
+TMF785-Copilot-v1.0.0.oas.yaml:952:5   | warning  | `#/components/responses/200` is potentially unused or has been orphaned | oas3-unused-component   | Schemas      | $.components.responses['200']
+TMF785-Copilot-v1.0.0.oas.yaml:954:5   | warning  | `#/components/responses/202` is potentially unused or has been orphaned | oas3-unused-component   | Schemas      | $.components.responses['202']
+TMF785-Copilot-v1.0.0.oas.yaml:955:20  | info     | Description at line `955` is a duplicate of line `187`                  | description-duplication | Descriptions | $.components.responses['202'].description
+TMF785-Copilot-v1.0.0.oas.yaml:956:5   | warning  | `#/components/responses/204` is potentially unused or has been orphaned | oas3-unused-component   | Schemas      | $.components.responses['204']
+TMF785-Copilot-v1.0.0.oas.yaml:957:20  | info     | Description at line `957` is a duplicate of line `71`                   | description-duplication | Descriptions | $.components.responses['204'].description
+TMF785-Copilot-v1.0.0.oas.yaml:1120:20 | info     | Description at line `1120` is a duplicate of line `1104`                | description-duplication | Descriptions | $.components.responses['200Thread_Get'].description
+TMF785-Copilot-v1.0.0.oas.yaml:1138:20 | info     | Description at line `1138` is a duplicate of line `1104`                | description-duplication | Descriptions | $.components.responses['200MessageArray'].description
+TMF785-Copilot-v1.0.0.oas.yaml:1154:20 | info     | Description at line `1154` is a duplicate of line `1104`                | description-duplication | Descriptions | $.components.responses['200Message_Get'].description
+TMF785-Copilot-v1.0.0.oas.yaml:1163:20 | info     | Description at line `1163` is a duplicate of line `1129`                | description-duplication | Descriptions | $.components.responses['201Message'].description
+TMF785-Copilot-v1.0.0.oas.yaml:1172:20 | info     | Description at line `1172` is a duplicate of line `1104`                | description-duplication | Descriptions | $.components.responses['200ToolCallTaskArray'].description
+TMF785-Copilot-v1.0.0.oas.yaml:1188:20 | info     | Description at line `1188` is a duplicate of line `1104`                | description-duplication | Descriptions | $.components.responses['200ToolCallTask_Get'].description
+TMF785-Copilot-v1.0.0.oas.yaml:1197:20 | info     | Description at line `1197` is a duplicate of line `1129`                | description-duplication | Descriptions | $.components.responses['201ToolCallTask'].description
+TMF785-Copilot-v1.0.0.oas.yaml:1206:20 | info     | Description at line `1206` is a duplicate of line `1129`                | description-duplication | Descriptions | $.components.responses['201Rating'].description
+TMF785-Copilot-v1.0.0.oas.yaml:1215:20 | info     | Description at line `1215` is a duplicate of line `1104`                | description-duplication | Descriptions | $.components.responses['200KnowledgeItemArray'].description
+TMF785-Copilot-v1.0.0.oas.yaml:1231:20 | info     | Description at line `1231` is a duplicate of line `1104`                | description-duplication | Descriptions | $.components.responses['200KnowledgeItem_Get'].description
 
 Category     | Errors | Warnings | Info
 Schemas      | 0      | 3        | 0

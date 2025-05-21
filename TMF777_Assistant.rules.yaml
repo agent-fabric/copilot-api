@@ -5,7 +5,7 @@ api:
   description: |
     TMF-aligned Copilot API implementing conversational assistants with threads, messages,
     ratings (feedback), and knowledge retrieval. Aligned with OpenAI Responses API structure.
-  tmfId: TMF777
+  tmfId: TMF785
   tmfName: Assistant
   hostUrl: http://serverRoot
   basePath: /api/rest/copilot/v1/
