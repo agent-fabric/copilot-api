@@ -1,0 +1,1528 @@
+openapi: 3.0.1
+info:
+  title: Copilot Assistant API
+  description: "This is the OpenAPI definition for the Copilot API (TMF785), designed\
+    \ to \nenable conversational and task-oriented interactions between applications\
+    \ \nand autonomous copilots.\n\nThe Copilot API focuses on delivering structured,\
+    \ multi-modal responses that \ncan drive intelligent user interfaces and adaptive\
+    \ automation workflows. \nUnlike simpler messaging endpoints, this API emphasizes\
+    \ rich result payloads \nwith UI-intent metadata, enabling consistent rendering\
+    \ across Catalyst-based \nand custom applications.\n\nThis interface supports\
+    \ the following aspects of Copilot integration:\n- Thread and message exchange\
+    \ modeling (formerly conversation/chat)\n- UX-aware response typing (e.g. text,\
+    \ table, pie-chart, select)\n- Agent and service interaction support via structured\
+    \ message exchanges\n- Designed to support integration into runtime environments\
+    \ and service workflows\n\nThis API is also informed by industry-standard agentic\
+    \ interfaces, including:\n- [TMF Open APIs REST Guidelines](https://github.com/tmforum-rand/tmf630-design-guidelines){:target=\"\
+    _blank\"}\n- [TMForum API Developers Guide (IG1353)](https://github.com/tmforum-rand/ig1353-api-developers-guide){:target=\"\
+    _blank\"}\n- [OpenAI\u2019s Responses API](https://platform.openai.com/docs/api-reference/responses){:target=\"\
+    _blank\"}\n- [OpenAI\u2019s Chat Completions API](https://platform.openai.com/docs/api-reference/chat){:target=\"\
+    _blank\"}\n- [Anthropic\u2019s Claude Messages API](https://docs.anthropic.com/claude/reference/messages_post){:target=\"\
+    _blank\"}\n- [Google\u2019s Gemini API (Generative AI Studio)](https://ai.google.dev/docs/gemini_api_overview){:target=\"\
+    _blank\"}\n"
+  version: 1.0.0
+  x-generation-tooling-version: v8.5.3-hotfix.0
+  x-generation-data-model-version: unknown
+servers:
+- url: '{apiRoot}/api/rest/copilot/v1/'
+  variables:
+    apiRoot:
+      default: http://serverRoot
+      enum:
+      - http://serverRoot
+tags:
+- name: thread
+  description: Operations for Thread Resource
+- name: message
+  description: Operations for Message Resource
+- name: toolCallTask
+  description: Operations for the ToolCallTask resource.
+  
+  This endpoint allows the client (such as a Copilot or UI agent) to invoke named tool functions 
+  in a structured and declarative way. Each ToolCallTask represents a semantic instruction 
+  to trigger a back-end process, integration routine, or domain-specific operation 
+  (e.g., "generateReport", "sendEmail", "fetchMetrics").
+  
+  This pattern supports composability and agentic automation: tools can be called by name 
+  with typed parameters, allowing copilots to dynamically reason about available capabilities 
+  and invoke them via API.
+  
+  Example request body:
+  {
+    "name": "sendReport",
+    "parameters": {
+      "reportId": "abc123",
+      "recipient": "ops@example.com"
+    }
+  }
+  
+  ToolCallTasks may be handled synchronously or asynchronously depending on the execution model.
+  Use `GET /toolCallTask/{id}` to check status or result payloads.
+- name: rating
+  description: Operations for Rating Resource
+- name: knowledgeItem
+  description: Operations for KnowledgeItem Resource
+- name: notification listener
+  description: Notifications for Resource Lifecycle and event notifications
+- name: events subscription
+  description: Endpoints to register and terminate an Event Listener
+paths:
+  /hub:
+    post:
+      operationId: createHub
+      summary: Create a subscription (hub) to receive Events
+      description: Sets the communication endpoint to receive Events.
+      tags:
+      - events subscription
+      requestBody:
+        $ref: '#/components/requestBodies/Hub_FVO'
+      responses:
+        '201':
+          $ref: '#/components/responses/Hub'
+        default:
+          $ref: '#/components/responses/Error'
+  /hub/{id}:
+    get:
+      operationId: hubGet
+      summary: Retrieve a subscription (hub)
+      description: This operation retrieves the subscription to receive Events.
+      tags:
+      - events subscription
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          $ref: '#/components/responses/Hub'
+        default:
+          $ref: '#/components/responses/Error'
+    delete:
+      operationId: hubDelete
+      summary: Remove a subscription (hub) to receive Events
+      description: This operation removes the subscription to receive Events.
+      tags:
+      - events subscription
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '204':
+          description: Deleted
+        default:
+          $ref: '#/components/responses/Error'
+  /knowledgeItem:
+    get:
+      tags:
+      - knowledgeItem
+      summary: List or find KnowledgeItem objects
+      description: List or find KnowledgeItem objects
+      operationId: listKnowledgeItem
+      parameters:
+      - $ref: '#/components/parameters/Fields'
+      - $ref: '#/components/parameters/Offset'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Before'
+      - $ref: '#/components/parameters/After'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/200KnowledgeItemArray'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /knowledgeItem/{id}:
+    get:
+      tags:
+      - knowledgeItem
+      summary: Retrieves a KnowledgeItem by ID
+      description: This operation retrieves a KnowledgeItem entity. Attribute selection
+        enabled for all first level attributes.
+      operationId: retrieveKnowledgeItem
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      - $ref: '#/components/parameters/Fields'
+      responses:
+        '200':
+          $ref: '#/components/responses/200KnowledgeItem_Get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /message:
+    get:
+      tags:
+      - message
+      summary: List or find Message objects
+      description: List or find Message objects
+      operationId: listMessage
+      parameters:
+      - $ref: '#/components/parameters/Fields'
+      - $ref: '#/components/parameters/Offset'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Before'
+      - $ref: '#/components/parameters/After'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/200MessageArray'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+    post:
+      tags:
+      - message
+      summary: Creates a Message
+      description: This operation creates a Message entity.
+      operationId: createMessage
+      parameters:
+      - $ref: '#/components/parameters/Fields'
+      requestBody:
+        $ref: '#/components/requestBodies/Message_FVO'
+      responses:
+        '201':
+          $ref: '#/components/responses/201Message'
+        '202':
+          description: Accepted
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /message/{id}:
+    get:
+      tags:
+      - message
+      summary: Retrieves a Message by ID
+      description: This operation retrieves a Message entity. Attribute selection
+        enabled for all first level attributes.
+      operationId: retrieveMessage
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      - $ref: '#/components/parameters/Fields'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Message_Get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /rating:
+    post:
+      tags:
+      - rating
+      summary: Creates a Rating
+      description: This operation creates a Rating entity.
+      operationId: createRating
+      parameters:
+      - $ref: '#/components/parameters/Fields'
+      requestBody:
+        $ref: '#/components/requestBodies/Rating_FVO'
+      responses:
+        '201':
+          $ref: '#/components/responses/201Rating'
+        '202':
+          description: Accepted
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /thread:
+    get:
+      tags:
+      - thread
+      summary: List or find Thread objects
+      description: List or find Thread objects
+      operationId: listThread
+      parameters:
+      - $ref: '#/components/parameters/Fields'
+      - $ref: '#/components/parameters/Offset'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Before'
+      - $ref: '#/components/parameters/After'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/200ThreadArray'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+    post:
+      tags:
+      - thread
+      summary: Creates a Thread
+      description: This operation creates a Thread entity.
+      operationId: createThread
+      parameters:
+      - $ref: '#/components/parameters/Fields'
+      requestBody:
+        $ref: '#/components/requestBodies/Thread_FVO'
+      responses:
+        '201':
+          $ref: '#/components/responses/201Thread'
+        '202':
+          description: Accepted
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /thread/{id}:
+    get:
+      tags:
+      - thread
+      summary: Retrieves a Thread by ID
+      description: This operation retrieves a Thread entity. Attribute selection enabled
+        for all first level attributes.
+      operationId: retrieveThread
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      - $ref: '#/components/parameters/Fields'
+      responses:
+        '200':
+          $ref: '#/components/responses/200Thread_Get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /toolCallTask:
+    get:
+      tags:
+      - toolCallTask
+      summary: List or find ToolCallTask objects
+      description: List or find ToolCallTask objects
+      operationId: listToolCallTask
+      parameters:
+      - $ref: '#/components/parameters/Fields'
+      - $ref: '#/components/parameters/Offset'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Before'
+      - $ref: '#/components/parameters/After'
+      - $ref: '#/components/parameters/Sort'
+      - $ref: '#/components/parameters/Filter'
+      responses:
+        '200':
+          $ref: '#/components/responses/200ToolCallTaskArray'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+    post:
+      tags:
+      - toolCallTask
+      summary: Creates a ToolCallTask
+      description: This operation creates a ToolCallTask entity.
+      operationId: createToolCallTask
+      parameters:
+      - $ref: '#/components/parameters/Fields'
+      requestBody:
+        $ref: '#/components/requestBodies/ToolCallTask_FVO'
+      responses:
+        '201':
+          $ref: '#/components/responses/201ToolCallTask'
+        '202':
+          description: Accepted
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '409':
+          $ref: '#/components/responses/409'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+  /toolCallTask/{id}:
+    get:
+      tags:
+      - toolCallTask
+      summary: Retrieves a ToolCallTask by ID
+      description: This operation retrieves a ToolCallTask entity. Attribute selection
+        enabled for all first level attributes.
+      operationId: retrieveToolCallTask
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      - $ref: '#/components/parameters/Fields'
+      responses:
+        '200':
+          $ref: '#/components/responses/200ToolCallTask_Get'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '405':
+          $ref: '#/components/responses/405'
+        '500':
+          $ref: '#/components/responses/500'
+        '501':
+          $ref: '#/components/responses/501'
+        '503':
+          $ref: '#/components/responses/503'
+components:
+  schemas:
+    Addressable:
+      type: object
+      description: Base schema for addressable entities
+      properties:
+        href:
+          type: string
+          description: Hyperlink reference
+        id:
+          type: string
+          description: unique identifier
+    Entity:
+      type: object
+      description: Base entity schema for use in TMForum Open-APIs. Property.
+      allOf:
+      - $ref: '#/components/schemas/Extensible'
+      - $ref: '#/components/schemas/Addressable'
+    Extensible:
+      type: object
+      description: Base Extensible schema for use in TMForum Open-APIs - When used
+        for in a schema it means that the Entity described by the schema  MUST be
+        extended with the @type
+      properties:
+        '@type':
+          type: string
+          description: When sub-classing, this defines the sub-class Extensible name
+        '@baseType':
+          type: string
+          description: When sub-classing, this defines the super-class
+        '@schemaLocation':
+          type: string
+          description: A URI to a JSON-Schema file that defines additional attributes
+            and relationships
+      required:
+      - '@type'
+    KnowledgeItem:
+      allOf:
+      - $ref: '#/components/schemas/Entity'
+      - type: object
+        description: KnowledgeItem resource representation
+        properties:
+          id:
+            type: string
+          href:
+            type: string
+          '@type':
+            type: string
+            default: KnowledgeItem
+          '@baseType':
+            type: string
+          '@schemaLocation':
+            type: string
+          title:
+            type: string
+          content:
+            type: string
+          tags:
+            type: array
+            items:
+              type: string
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          KnowledgeItem: '#/components/schemas/KnowledgeItem'
+    KnowledgeItem_RES:
+      type: object
+      description: Response object for KnowledgeItem
+      allOf:
+      - $ref: '#/components/schemas/KnowledgeItem'
+      required:
+      - id
+      - href
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          KnowledgeItem: '#/components/schemas/KnowledgeItem'
+    Message:
+      allOf:
+      - $ref: '#/components/schemas/Entity'
+      - type: object
+        description: Message resource representation
+        properties:
+          id:
+            type: string
+          href:
+            type: string
+          '@type':
+            type: string
+            default: Message
+          '@baseType':
+            type: string
+          '@schemaLocation':
+            type: string
+          role:
+            type: string
+            enum:
+            - user
+            - system
+          content:
+            type: string
+          timestamp:
+            type: string
+            format: date-time
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Message: '#/components/schemas/Message'
+    Message_FVO:
+      allOf:
+      - $ref: '#/components/schemas/Entity'
+      - type: object
+        description: Message resource representation
+        properties:
+          id:
+            type: string
+          href:
+            type: string
+          '@type':
+            type: string
+            default: Message
+          '@baseType':
+            type: string
+          '@schemaLocation':
+            type: string
+          role:
+            type: string
+            enum:
+            - user
+            - system
+          content:
+            type: string
+          timestamp:
+            type: string
+            format: date-time
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Message: '#/components/schemas/Message_FVO'
+    Message_RES:
+      type: object
+      description: Response object for Message
+      allOf:
+      - $ref: '#/components/schemas/Message'
+      required:
+      - id
+      - href
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Message: '#/components/schemas/Message'
+    Rating:
+      allOf:
+      - $ref: '#/components/schemas/Entity'
+      - type: object
+        description: Rating resource representation
+        properties:
+          id:
+            type: string
+          href:
+            type: string
+          '@type':
+            type: string
+            default: Rating
+          '@baseType':
+            type: string
+          '@schemaLocation':
+            type: string
+          rating:
+            type: string
+            enum:
+            - thumbs_up
+            - thumbs_down
+          comment:
+            type: string
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Rating: '#/components/schemas/Rating'
+    Rating_FVO:
+      allOf:
+      - $ref: '#/components/schemas/Entity'
+      - type: object
+        description: Rating resource representation
+        properties:
+          id:
+            type: string
+          href:
+            type: string
+          '@type':
+            type: string
+            default: Rating
+          '@baseType':
+            type: string
+          '@schemaLocation':
+            type: string
+          rating:
+            type: string
+            enum:
+            - thumbs_up
+            - thumbs_down
+          comment:
+            type: string
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Rating: '#/components/schemas/Rating_FVO'
+    Rating_RES:
+      type: object
+      description: Response object for Rating
+      allOf:
+      - $ref: '#/components/schemas/Rating'
+      required:
+      - id
+      - href
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Rating: '#/components/schemas/Rating'
+    Thread:
+      type: object
+      properties:
+        id:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        status:
+          type: string
+        metadata:
+          type: object
+    Thread_FVO:
+      type: object
+      properties:
+        id:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        status:
+          type: string
+        metadata:
+          type: object
+      required:
+      - id
+      - createdAt
+    Thread_RES:
+      type: object
+      description: Response object for Thread
+      allOf:
+      - $ref: '#/components/schemas/Thread'
+    ToolCallTask:
+      allOf:
+      - $ref: '#/components/schemas/Entity'
+      - type: object
+        description: ToolCallTask resource representation
+        properties:
+          id:
+            type: string
+          href:
+            type: string
+          '@type':
+            type: string
+            default: ToolCallTask
+          '@baseType':
+            type: string
+          '@schemaLocation':
+            type: string
+          name:
+            type: string
+          parameters:
+            type: object
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ToolCallTask: '#/components/schemas/ToolCallTask'
+    ToolCallTask_FVO:
+      allOf:
+      - $ref: '#/components/schemas/Entity'
+      - type: object
+        description: ToolCallTask resource representation
+        properties:
+          id:
+            type: string
+          href:
+            type: string
+          '@type':
+            type: string
+            default: ToolCallTask
+          '@baseType':
+            type: string
+          '@schemaLocation':
+            type: string
+          name:
+            type: string
+          parameters:
+            type: object
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ToolCallTask: '#/components/schemas/ToolCallTask_FVO'
+    ToolCallTask_RES:
+      type: object
+      description: Response object for ToolCallTask
+      allOf:
+      - $ref: '#/components/schemas/ToolCallTask'
+      required:
+      - id
+      - href
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          ToolCallTask: '#/components/schemas/ToolCallTask'
+    Error:
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          Error: '#/components/schemas/Error'
+      allOf:
+      - $ref: '#/components/schemas/Extensible'
+      - type: object
+        required:
+        - code
+        - reason
+        properties:
+          code:
+            type: string
+            description: Application relevant detail, defined in the API or a common
+              list.
+          reason:
+            type: string
+            description: Explanation of the reason for the error which can be shown
+              to a client user.
+          message:
+            type: string
+            description: More details and corrective actions related to the error
+              which can be shown to a client user.
+          status:
+            type: string
+            description: HTTP Error code extension
+          referenceError:
+            type: string
+            description: URI of documentation describing the error.
+      description: Used when an API throws an Error, typically with a HTTP error response-code
+        (3xx, 4xx, 5xx)
+    Hub_FVO:
+      type: object
+      description: Sets the communication endpoint address the service instance must
+        use to deliver notification information
+      required:
+      - callback
+      allOf:
+      - $ref: '#/components/schemas/Extensible'
+      - properties:
+          callback:
+            type: string
+            description: The callback being registered.
+          query:
+            type: string
+            description: additional data to be passed
+    Hub:
+      type: object
+      description: Sets the communication endpoint address the service instance must
+        use to deliver notification information
+      allOf:
+      - $ref: '#/components/schemas/Entity'
+      - properties:
+          id:
+            type: string
+            description: Id of the listener
+          callback:
+            type: string
+            description: The callback being registered.
+          query:
+            type: string
+            description: additional data to be passed
+        required:
+        - callback
+    ChatResponse:
+      type: object
+      properties:
+        conversationId:
+          type: string
+        chatId:
+          type: string
+        status:
+          type: string
+        interactionType:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResultItem'
+    ResultItem:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+          - table
+          - select
+          - markdown
+          - detail
+          - axis-chart
+          - pie-chart
+          - tag
+        text:
+          type: object
+        table:
+          type: object
+        select:
+          type: object
+        markdown:
+          type: object
+        detail:
+          type: object
+        axis-chart:
+          type: object
+        pie-chart:
+          type: object
+        tag:
+          type: object
+  parameters:
+    Id:
+      name: id
+      required: true
+      schema:
+        type: string
+      in: path
+      description: Identifier of the Resource
+    Fields:
+      name: fields
+      in: query
+      description: Comma-separated properties to be provided in response
+      schema:
+        type: string
+    Offset:
+      name: offset
+      in: query
+      description: Requested index for start of resources to be provided in response
+      schema:
+        type: integer
+    Limit:
+      name: limit
+      in: query
+      description: Requested number of resources to be provided in response
+      schema:
+        type: integer
+    Before:
+      name: before
+      in: query
+      description: An opaque string value representing the page results before the
+        cursor value
+      schema:
+        type: string
+    After:
+      name: after
+      in: query
+      description: An opaque string value representing the page results after the
+        cursor value
+      schema:
+        type: string
+    Sort:
+      name: sort
+      in: query
+      description: "The default direction is Ascending order, the use of the modifier\
+        \ in front of the sort field name, \u201C-\u201C, changes the sort order direction."
+      schema:
+        type: string
+    Filter:
+      name: filter
+      in: query
+      description: Filter a collection using JSONPath
+      schema:
+        type: string
+        example: attachment[?(@size==300)]
+  requestBodies:
+    Thread_FVO:
+      description: The Thread to be created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Thread_FVO'
+          examples:
+            thread_POST_201_8:
+              $ref: '#/components/examples/thread_POST_201_8_request'
+      required: true
+    Message_FVO:
+      description: The Message to be created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message_FVO'
+          examples:
+            Message_message_POST_201_4:
+              $ref: '#/components/examples/Message_message_POST_201_4_request'
+      required: true
+    ToolCallTask_FVO:
+      description: The ToolCallTask to be created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ToolCallTask_FVO'
+          examples:
+            ToolCallTask_toolCallTask_POST_201_11:
+              $ref: '#/components/examples/ToolCallTask_toolCallTask_POST_201_11_request'
+      required: true
+    Rating_FVO:
+      description: The Rating to be created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Rating_FVO'
+          examples:
+            Rating_rating_POST_201_6:
+              $ref: '#/components/examples/Rating_rating_POST_201_6_request'
+      required: true
+    Hub_FVO:
+      description: Data containing the callback endpoint to deliver the information
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Hub_FVO'
+          examples:
+            Basic Hub Example Request:
+              value:
+                '@type': Hub
+                callback: https://host/tmf-api/specificAPIName/v5/listener/specificEventListener
+                query: data
+      required: true
+  responses:
+    '200':
+      description: OK
+    '202':
+      description: Accepted
+    '204':
+      description: Deleted
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Bad Request Error
+              value:
+                '@type': Error
+                code: ERR400
+                reason: Bad Request
+                message: The server could not understand the request due to invalid
+                  syntax. Please correct the syntax and try again.
+                referenceError: https://host/errors
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Unauthorized Error
+              value:
+                '@type': Error
+                code: ERR401
+                reason: Unauthorized
+                message: You are not authorized to access the requested resource.
+                  Please provide the correct credentials.
+                referenceError: https://host/errors
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Forbidden Error
+              value:
+                '@type': Error
+                code: ERR403
+                reason: Forbidden
+                message: You don't have the permission to access the requested resource.
+                  It is either read-protected or not readable by the server.
+                referenceError: https://host/errors
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Not Found Error
+              value:
+                '@type': Error
+                code: ERR404
+                reason: Not Found
+                message: The requested URL was not found on the server.
+                referenceError: https://host/errors
+    '405':
+      description: Method Not allowed
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Method Not allowed Error
+              value:
+                '@type': Error
+                code: ERR405
+                reason: Method Not allowed
+                message: The method is not allowed for the requested URL.
+                referenceError: https://host/errors
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Conflict Error
+              value:
+                '@type': Error
+                code: ERR409
+                reason: Conflict
+                message: The request could not be completed due to a conflict with
+                  the current state of the target resource.
+                referenceError: https://host/errors
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Internal Server Error example
+              value:
+                '@type': Error
+                code: ERR500
+                reason: Internal Server Error
+                message: The server encountered an internal error. Please contact
+                  the system administrator.
+                referenceError: https://host/errors
+    '501':
+      description: Not Implemented
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Not Implemented Error
+              value:
+                '@type': Error
+                code: ERR501
+                reason: The requested operation is not implemented
+                message: The requested operation is not implemented. Please contact
+                  the system administrator.
+                referenceError: https://host/errors
+    '503':
+      description: Service Unavailable
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Service Unavailable Error
+              value:
+                '@type': Error
+                code: ERR503
+                reason: Service Unavailable
+                message: The service is currently unavailable. Please try again later.
+                referenceError: https://host/errors
+    200ThreadArray:
+      description: Success
+      headers:
+        X-Total-Count:
+          $ref: '#/components/headers/X-Total-Count'
+        X-Result-Count:
+          $ref: '#/components/headers/X-Result-Count'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Thread_RES'
+          examples:
+            thread_GET_200_7:
+              $ref: '#/components/examples/thread_GET_200_7_response'
+    200Thread_Get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Thread_RES'
+          examples:
+            thread_DQABS_GET_200_9:
+              $ref: '#/components/examples/thread_DQABS_GET_200_9_response'
+    201Thread:
+      description: OK/Created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Thread_RES'
+          examples:
+            thread_POST_201_8:
+              $ref: '#/components/examples/thread_POST_201_8_response'
+    200MessageArray:
+      description: Success
+      headers:
+        X-Total-Count:
+          $ref: '#/components/headers/X-Total-Count'
+        X-Result-Count:
+          $ref: '#/components/headers/X-Result-Count'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Message_RES'
+          examples:
+            Message_message_GET_200_3:
+              $ref: '#/components/examples/Message_message_GET_200_3_response'
+    200Message_Get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message_RES'
+          examples:
+            Message_message_YIQEV_GET_200_5:
+              $ref: '#/components/examples/Message_message_YIQEV_GET_200_5_response'
+    201Message:
+      description: OK/Created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Message_RES'
+          examples:
+            Message_message_POST_201_4:
+              $ref: '#/components/examples/Message_message_POST_201_4_response'
+    200ToolCallTaskArray:
+      description: Success
+      headers:
+        X-Total-Count:
+          $ref: '#/components/headers/X-Total-Count'
+        X-Result-Count:
+          $ref: '#/components/headers/X-Result-Count'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/ToolCallTask_RES'
+          examples:
+            ToolCallTask_toolCallTask_GET_200_10:
+              $ref: '#/components/examples/ToolCallTask_toolCallTask_GET_200_10_response'
+    200ToolCallTask_Get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ToolCallTask_RES'
+          examples:
+            ToolCallTask_toolCallTask_EOADY_GET_200_12:
+              $ref: '#/components/examples/ToolCallTask_toolCallTask_EOADY_GET_200_12_response'
+    201ToolCallTask:
+      description: OK/Created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ToolCallTask_RES'
+          examples:
+            ToolCallTask_toolCallTask_POST_201_11:
+              $ref: '#/components/examples/ToolCallTask_toolCallTask_POST_201_11_response'
+    201Rating:
+      description: OK/Created
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Rating_RES'
+          examples:
+            Rating_rating_POST_201_6:
+              $ref: '#/components/examples/Rating_rating_POST_201_6_response'
+    200KnowledgeItemArray:
+      description: Success
+      headers:
+        X-Total-Count:
+          $ref: '#/components/headers/X-Total-Count'
+        X-Result-Count:
+          $ref: '#/components/headers/X-Result-Count'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/KnowledgeItem_RES'
+          examples:
+            KnowledgeItem_knowledgeItem_GET_200_1:
+              $ref: '#/components/examples/KnowledgeItem_knowledgeItem_GET_200_1_response'
+    200KnowledgeItem_Get:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/KnowledgeItem_RES'
+          examples:
+            KnowledgeItem_knowledgeItem_ICNJY_GET_200_2:
+              $ref: '#/components/examples/KnowledgeItem_knowledgeItem_ICNJY_GET_200_2_response'
+    Error:
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            basic:
+              summary: Error example
+              value:
+                '@type': Error
+                code: ERR001
+                reason: Missing information
+                message: Please provide the additional example information
+                referenceError: https://host/errors
+    Hub:
+      description: Notified
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Hub'
+          examples:
+            basic:
+              summary: Hub example
+              value:
+                '@type': Hub
+                callback: https://host/tmf-api/specificAPIName/v5/listener/specificEventListener
+  headers:
+    X-Total-Count:
+      description: Total number of items matching criteria
+      schema:
+        type: integer
+    X-Result-Count:
+      description: Actual number of items returned in the response body
+      schema:
+        type: integer
+  securitySchemes: {}
+  examples:
+    thread_DQABS_GET_200_9_response:
+      value:
+        id: KCTLW
+        createdAt: '2025-05-07T19:25:04Z'
+        status: YBUVE
+        metadata: {}
+      description: 'This is an example of a response '
+    thread_GET_200_7_response:
+      value:
+      - id: EKJBR
+        createdAt: '2025-05-07T19:24:59Z'
+        status: YWLOF
+        metadata: {}
+      - id: DHMHG
+        createdAt: '2025-05-07T19:24:59Z'
+        status: LUBKK
+        metadata: {}
+      description: 'This is an example of a response '
+    Message_message_GET_200_3_response:
+      value:
+      - '@type': Message
+        '@baseType': OHBHT
+        '@schemaLocation': KIVNG
+        href: THWPD
+        id: YJGJJ
+        role: user
+        content: NYBAK
+        timestamp: '2025-05-07T19:24:50Z'
+      description: This is an example of a response when the entity has @type value
+        as Message
+    Message_message_YIQEV_GET_200_5_response:
+      value:
+        '@type': Message
+        '@baseType': BBELI
+        '@schemaLocation': KJUNU
+        href: HWFXA
+        id: FJNAM
+        role: user
+        content: LYXHM
+        timestamp: '2025-05-07T19:24:54Z'
+      description: This is an example of a response when the entity has @type value
+        as Message
+    ToolCallTask_toolCallTask_EOADY_GET_200_12_response:
+      value:
+        '@type': ToolCallTask
+        '@baseType': OLFGI
+        '@schemaLocation': TNBBV
+        href: ASGPH
+        id: IXGLX
+        name: CUYUB
+        parameters: {}
+      description: This is an example of a response when the entity has @type value
+        as ToolCallTask
+    ToolCallTask_toolCallTask_GET_200_10_response:
+      value:
+      - '@type': ToolCallTask
+        '@baseType': HWIII
+        '@schemaLocation': ETOTP
+        href: GYPEH
+        id: JCFJN
+        name: SMAFP
+        parameters: {}
+      description: This is an example of a response when the entity has @type value
+        as ToolCallTask
+    KnowledgeItem_knowledgeItem_GET_200_1_response:
+      value:
+      - '@type': KnowledgeItem
+        '@baseType': DVKTR
+        '@schemaLocation': JYIUK
+        href: MFTAD
+        id: XSDVB
+        title: OKSKL
+        content: VDRGG
+        tags:
+        - NCSVD
+        - BLWGU
+      description: This is an example of a response when the entity has @type value
+        as KnowledgeItem
+    KnowledgeItem_knowledgeItem_ICNJY_GET_200_2_response:
+      value:
+        '@type': KnowledgeItem
+        '@baseType': IYKQB
+        '@schemaLocation': OROWR
+        href: PXXNQ
+        id: KLFEI
+        title: DYQVI
+        content: NRDCJ
+        tags:
+        - AFMBF
+        - CELRN
+      description: This is an example of a response when the entity has @type value
+        as KnowledgeItem
+    thread_POST_201_8_request:
+      value:
+        id: PLLWY
+        createdAt: '2025-05-07T19:25:00Z'
+        status: REGIH
+        metadata: {}
+      description: 'This is an example of a request to create a new entity at the
+        /thread endpoint '
+    thread_POST_201_8_response:
+      value:
+        id: WDKFI
+        createdAt: '2025-05-07T19:25:00Z'
+        status: CFVLP
+        metadata: {}
+      description: 'This is an example of a response after creating a new entity at
+        the /thread endpoint '
+    Message_message_POST_201_4_request:
+      value:
+        '@type': Message
+        '@baseType': WISVT
+        '@schemaLocation': GEEMU
+        href: PUJVB
+        id: YWMAI
+        role: user
+        content: KILRJ
+        timestamp: '2025-05-07T19:24:52Z'
+      description: This is an example of a request to create a new entity at the /message
+        endpoint when the entity has @type value as Message
+    Message_message_POST_201_4_response:
+      value:
+        '@type': Message
+        '@baseType': LBOGX
+        '@schemaLocation': UDXNW
+        href: DUVUA
+        id: XCBDA
+        role: user
+        content: HYPPD
+        timestamp: '2025-05-07T19:24:52Z'
+      description: This is an example of a response after creating a new entity at
+        the /message endpoint when the entity has @type value as Message
+    ToolCallTask_toolCallTask_POST_201_11_request:
+      value:
+        '@type': ToolCallTask
+        '@baseType': XLTYR
+        '@schemaLocation': QPDQL
+        href: QIVDH
+        id: FDBDE
+        name: CNTBL
+        parameters: {}
+      description: This is an example of a request to create a new entity at the /toolCallTask
+        endpoint when the entity has @type value as ToolCallTask
+    ToolCallTask_toolCallTask_POST_201_11_response:
+      value:
+        '@type': ToolCallTask
+        '@baseType': GOSOB
+        '@schemaLocation': RKBUN
+        href: YAKLX
+        id: XRPEC
+        name: NTMWQ
+        parameters: {}
+      description: This is an example of a response after creating a new entity at
+        the /toolCallTask endpoint when the entity has @type value as ToolCallTask
+    Rating_rating_POST_201_6_request:
+      value:
+        '@type': Rating
+        '@baseType': QINXS
+        '@schemaLocation': MNSSN
+        href: EPOWF
+        id: RNXUE
+        rating: thumbs_up
+        comment: ARUNK
+      description: This is an example of a request to create a new entity at the /rating
+        endpoint when the entity has @type value as Rating
+    Rating_rating_POST_201_6_response:
+      value:
+        '@type': Rating
+        '@baseType': NSISG
+        '@schemaLocation': THCIT
+        href: TNKGK
+        id: SEQKW
+        rating: thumbs_up
+        comment: WIFHV
+      description: This is an example of a response after creating a new entity at
+        the /rating endpoint when the entity has @type value as Rating
