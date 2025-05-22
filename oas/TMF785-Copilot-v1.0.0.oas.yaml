@@ -1,14 +1,32 @@
 openapi: 3.0.1
 info:
   title: Copilot Assistant API
-  description: 'TMF-aligned Copilot API implementing conversational assistants with
-    threads, messages,
+  version: "1.0.0"
+  description: |
+    TMF API Reference: TMF-785 Copilot API
 
-    ratings (feedback), and knowledge retrieval. Aligned with OpenAI Responses API
-    structure.
+    Release: 1.0 May 2025
 
-    '
-  version: 1.0.0
+    The Copilot API is a standards-based interface for conversational and task-oriented interaction between applications and copilots. It lets a client start or continue a thread, post messages (prompts or tasks), and receive structured responses that carry UI-intent metadata—so front-ends can render buttons, forms, links, or media consistently and back-ends can trigger automation without text parsing.
+
+    **Key capabilities**
+      - Thread and message exchange modelling (formerly conversation/chat)
+      - UX-aware response typing (text, table, pie-chart, select, etc.)
+      - Agent and service interaction via structured message exchanges
+      - Designed for integration into runtime environments and service workflows
+      - Built-in feedback (thumbs-up / thumbs-down) and knowledge-item retrieval
+      - Event notifications for real-time updates
+
+    **Inspired by industry APIs**
+      - [TMF Open APIs REST Guidelines](https://github.com/tmforum-rand/tmf630-design-guidelines)
+      - [TM Forum API Developers Guide (IG1353)](https://github.com/tmforum-rand/ig1353-api-developers-guide)
+      - [OpenAI Responses API](https://platform.openai.com/docs/api-reference/responses)
+      - [OpenAI Chat Completions API](https://platform.openai.com/docs/api-reference/chat)
+      - [Anthropic Claude Messages API](https://docs.anthropic.com/claude/reference/messages_post)
+      - [Google Gemini API](https://ai.google.dev/docs/gemini_api_overview)
+
+    Agent Fabric 2025. Catalyst C25.0.798
+
   x-generation-tooling-version: v8.5.3-hotfix.0
   x-generation-data-model-version: unknown
 servers:
@@ -20,15 +38,68 @@ servers:
       - http://serverRoot
 tags:
 - name: thread
-  description: Operations for Thread Resource
+  description: |
+    Operations for the Thread resource.
+
+    Threads represent ongoing interactions or contextual sessions in which messages and tool calls are exchanged. 
+    Use this resource to initialize, list, and retrieve conversational or task-oriented threads. 
+    Each thread acts as a container for coordinating context, responses, and interactions across time.
+
+    Clients should create a thread before sending the first message or ToolCallTask.
+
+    Example: POST /thread to initiate a new user interaction session.
 - name: message
-  description: Operations for Message Resource
+  description: |
+    Operations for the Message resource.
+
+    Messages are the fundamental units of user or system communication exchanged within a Thread.
+    They can originate from users, copilots, or backend systems, and may include content like text,
+    structured instructions, or metadata.
+
+    Use POST /message to send a message into an existing thread.
+    Use GET /message to retrieve history or logs of exchanged messages.
 - name: toolCallTask
-  description: Operations for ToolCallTask Resource
+  description: |
+    Operations for the ToolCallTask resource.
+
+    This endpoint allows the client (such as a Copilot or UI agent) to invoke named tool functions 
+    in a structured and declarative way. Each ToolCallTask represents a semantic instruction 
+    to trigger a back-end process, integration routine, or domain-specific operation 
+    (e.g., "generateReport", "sendEmail", "fetchMetrics").
+
+    This pattern supports composability and agentic automation: tools can be called by name 
+    with typed parameters, allowing copilots to dynamically reason about available capabilities 
+    and invoke them via API.
+
+    Example request body:
+    {
+      "name": "sendReport",
+      "parameters": {
+        "reportId": "abc123",
+        "recipient": "ops@example.com"
+      }
+    }
+
+    ToolCallTasks may be handled synchronously or asynchronously depending on the execution model.
+    Use `GET /toolCallTask/{id}` to check status or result payloads.
 - name: rating
-  description: Operations for Rating Resource
+  description: |
+    Operations for the Rating resource.
+
+    This resource allows clients or users to submit feedback on a given result, 
+    message, or interaction outcome. Ratings are useful for model supervision, analytics, 
+    or reinforcement learning.
+
+    Use POST /rating to register user preferences (e.g., thumbs_up or thumbs_down).
 - name: knowledgeItem
-  description: Operations for KnowledgeItem Resource
+  description: |
+    Operations for the KnowledgeItem resource.
+
+    Knowledge items represent curated or indexed knowledge elements that can be 
+    referenced or searched by Copilot agents. They typically contain helpful content, 
+    documents, FAQs, or policies.
+
+    Use this endpoint to fetch or filter available knowledge using metadata, title, or tags.
 - name: notification listener
   description: Notifications for Resource Lifecycle and event notifications
 - name: events subscription
